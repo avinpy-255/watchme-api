@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import ConnectToDatabase from "./config/db";
 import { PORT } from "./constansts/env";
 import errorHandler from "./middleware/errorHandler";
+import { OK } from "./constansts/http";
 
 const app = express();
 
@@ -18,10 +19,12 @@ app.use(
 app.use(cookieParser());
 
 app.get("/", (req, res) => {
-  res.status(200).json({
+  res.status(OK).json({
     msg: "hello World",
   });
 });
+
+app.use("api/v1", authRoutes);
 
 app.use(errorHandler);
 

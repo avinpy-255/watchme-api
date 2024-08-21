@@ -15,3 +15,4 @@ const catchErrors =
       next(error);
     }
   };
+export default catchErrors;
