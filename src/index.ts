@@ -6,6 +6,7 @@ import ConnectToDatabase from "./config/db";
 import { PORT } from "./constansts/env";
 import errorHandler from "./middleware/errorHandler";
 import { OK } from "./constansts/http";
+import authRoutes from "./routes/authRoutes";
 
 const app = express();
 
@@ -24,11 +25,11 @@ app.get("/", (req, res) => {
   });
 });
 
-app.use("api/v1", authRoutes);
+app.use("/api/v1", authRoutes);
 
 app.use(errorHandler);
 
-app.listen(6660, async () => {
+app.listen(PORT, async () => {
   console.log(`server is running on port ${PORT}`);
   await ConnectToDatabase();
 });
