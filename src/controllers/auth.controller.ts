@@ -14,9 +14,8 @@ const registerSchema = z
   });
 
 export const registerHandler = catchErrors(async (req, res) => {
-  const userAgent = req.headers.get("user-agent"); // Use the get method instead of index access
   const request = registerSchema.parse({
     ...req.body,
-    userAgent,
   });
 });
+//TODO: creating routes
