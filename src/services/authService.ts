@@ -13,4 +13,9 @@ export const createAccount = async (data: createAccountParams) => {
   if (existingUser) {
     throw new Error("User already exists");
   }
+  //creating a user
+  const createUser = await userModel.create({
+    email: data.email,
+    password: data.password,
+  });
 };

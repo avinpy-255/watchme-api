@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { hashValue } from "../utils/hash";
+import { compareValue, hashValue } from "../utils/hash";
 
 export interface UserDocument extends mongoose.Document {
   email: string;
@@ -28,3 +28,10 @@ userSchema.pre("save", async function (next) {
   this.password = await hashValue(this.password);
   next();
 });
+
+userSchema.methods.comparePassword = async function (val: string) {
+  return compareValue(val, this.password);
+};
+
+const userModel = mongoose.model<UserDocument>("User", userSchema);
+export default userModel;
