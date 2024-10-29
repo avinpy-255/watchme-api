@@ -8,10 +8,10 @@ const PORT = process.env.PORT || 3000;
 const config = {
   authRequired: false,
   auth0Logout: true,
-  secret: 'c0CCCuPPLvOVeTH34UVBLatjkyEHgNkmekNdMfH8zLu9f68TjLZ9A48YYZdwQNAW',
-  baseURL: 'http://localhost:3000',
-  clientID: 'djVzXZ5xvm5Btk1ZDRHILUnu738kdM67',
-  issuerBaseURL: 'https://dev-3grevt4a5kbvy56f.us.auth0.com'
+  secret: process.env.CLIENT_SECRET,
+  baseURL: process.env.BASE_URL,
+  clientID: process.env.CLIENT_ID,
+  issuerBaseURL: process.env.ISSUER_BASE_URL
 };
 
 // auth router attaches /login, /logout, and /callback routes to the baseURL
